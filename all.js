@@ -1,11 +1,13 @@
 let allData = [];
 let filterData = [];
+const url = 'https://hexschool.github.io/js-filter-data/data.json';
+
 // axios取得資料
 function getData() {
-  axios
-    .get('https://hexschool.github.io/js-filter-data/data.json')
+  axios.get(url)
     .then(function (response) {
       allData = response.data;
+      filterData = [...allData]; //因getData執行時資料載入為非同步，當瀏覽器刷新時使用資料排序filterData還是空的，須透過淺拷貝[...]複製一份allData給filterData，也不影響allData原始數據
       renderData(allData);
     })
     .catch(function (error) {
@@ -13,6 +15,7 @@ function getData() {
     });
 }
 getData();
+
 // 渲染
 const productList = document.querySelector('.showList');
 function renderData(array) {
@@ -30,6 +33,7 @@ function renderData(array) {
   });
   productList.innerHTML = str;
 }
+
 // 種類篩選
 const typeBTN = document.querySelector('.button-group');
 const BTNstyle = document.querySelectorAll('.button-group .btn');
@@ -41,16 +45,17 @@ typeBTN.addEventListener('click', function (e) {
     });
     e.target.classList.add('btnActive');
     if (type === 'all') {
-      renderData(allData);
+      filterData = allData;
+      renderData(filterData);
       searchHint.innerHTML = '';
     } else if (type !== 'all') {
       filterData = allData.filter((item) => item.種類代碼 === type);
       renderData(filterData);
-      return filterData;
       searchHint.innerHTML = '';
     }
   }
 });
+
 //搜尋
 const searchInput = document.querySelector('#crop');
 const searchBTN = document.querySelector('.search');
@@ -76,27 +81,55 @@ function search() {
     });
     return;
   }
-  return filterData;
+  searchInput.value = '';
 }
-
 searchInput.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     search();
-    console.log(filterData);
   }
 });
 searchBTN.addEventListener('click', function () {
   search();
-  console.log(filterData);
 });
+
 //資料排序
+const priceSortIcon = document.querySelector('.js-sort-advanced');
+priceSortIcon.addEventListener('click', function (e) {
+  if (e.target.nodeName === 'I') {
+    const sortPrice = e.target.getAttribute('data-price');
+    const sortCaret = e.target.getAttribute('data-sort');
+    showSortData(sortPrice, sortCaret);
+  }
+});
+function showSortData(sortPrice, sortCaret) {
+  if (sortCaret === 'up') {
+    filterData.sort(function (a, b) {
+      return a[sortPrice] - b[sortPrice];
+    });
+  } else {
+    filterData.sort(function (a, b) {
+      return b[sortPrice] - a[sortPrice];
+    });
+  }
+  renderData(filterData);
+  console.log(filterData);
+}
 
+//下拉表單排序
+const priceSortSelect = document.querySelector('#js-select');
+priceSortSelect.addEventListener('change', function (e) {
+  const selectOption = priceSortSelect.options[priceSortSelect.selectedIndex];
+  const selectPrice = selectOption.getAttribute('data-price');
+  const selectCaret = selectOption.getAttribute('data-sort');
+  showSortData(selectPrice, selectCaret);
+});
 
-
-
-
-
-
-
-
-
+//下拉表單排序(Mobile)
+const priceSortSelectMB = document.querySelector('#js-mobile-select');
+priceSortSelectMB.addEventListener('change', function (e) {
+  const selectOption =
+    priceSortSelectMB.options[priceSortSelectMB.selectedIndex];
+  const selectPriceMB = selectOption.getAttribute('data-price');
+  const selectCaretMB = selectOption.getAttribute('data-sort');
+  showSortData(selectPriceMB, selectCaretMB);
+});

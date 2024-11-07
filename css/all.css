@@ -25,8 +25,7 @@ body {
 }
 .logo a {
   display: block;
-  background: url(/image/logo.png)
-    no-repeat;
+  background: url(/image/logo.png) no-repeat;
   width: 450px;
   height: 105px;
   text-indent: 101%;
@@ -35,8 +34,7 @@ body {
 }
 @media (max-width: 767px) {
   .logo a {
-    background: url(/image/logo-s.png)
-      no-repeat;
+    background: url(/image/logo-s.png) no-repeat;
     width: 178px;
     height: 50px;
     margin: 1.25rem auto;
@@ -46,6 +44,8 @@ body {
   background: #fff;
   border: 5px solid #fff8d45a;
   padding: 2.5rem;
+  border: 2px solid #f1ad0e;
+  margin: 0px 5px 5px 5px;
 }
 @media (max-width: 767px) {
   .main {
@@ -62,7 +62,7 @@ body {
 .btn-type:active {
   background: #f8d45a;
 }
-.btnActive{
+.btnActive {
   background: #f8d45a;
 }
 @media (max-width: 767px) {
@@ -73,7 +73,6 @@ body {
 }
 .search-group {
   white-space: nowrap;
-  
   width: 100%;
 }
 .date-input,
@@ -97,7 +96,6 @@ body {
   width: 28%;
   background: #899e39;
   padding: 0.5rem 3.375rem;
-  
 }
 @media (max-width: 767px) {
   .date-input,
@@ -106,7 +104,6 @@ body {
   }
   .search {
     width: 96%;
-    
   }
 }
 .sort-select {
@@ -129,6 +126,9 @@ body {
   border-top: 2px solid #2a2a2a;
   border-bottom: 2px solid #2a2a2a;
 }
+.market thead i:hover {
+  cursor: pointer;
+}
 .market tbody {
   border-bottom: 2px solid #d9d9d9;
 }
@@ -146,7 +146,12 @@ body {
     -webkit-appearance: none;
     background: url('data:image/svg+xml;utf8,<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort-down" class="svg-inline--fa fa-sort-down fa-w-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="10 0 320 800"><path fill="currentColor" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"></path></svg>')
       no-repeat;
+    color: white;
     background-position: 60px 3px;
+    background-color: rgb(125, 118, 118);
+  }
+  .mobile-select:hover {
+    cursor: pointer;
   }
 }
 .sort-advanced {
