@@ -26,7 +26,7 @@ body {
 .logo a {
   display: block;
   background-image: url(https://i.imgur.com/VERB13C.png);
-  background: no-repeat;
+  
   width: 450px;
   height: 105px;
   text-indent: 101%;
@@ -36,7 +36,7 @@ body {
 @media (max-width: 767px) {
   .logo a {
     background-image: url(https://i.imgur.com/YPE6gfX.png);
-    background: no-repeat;
+    
     width: 178px;
     height: 50px;
     margin: 1.25rem auto;
