@@ -11,7 +11,7 @@ img {
   display: inline-flex;
 }
 body {
-  background: url(/image/background.jpg);
+  background: url(https://i.imgur.com/k3bdfjS.jpg);
   background-size: cover;
   height: 100vh;
   font-family: 'NotoSansCJKtc-Bold';
@@ -25,7 +25,7 @@ body {
 }
 .logo a {
   display: block;
-  background: url(/image/logo.png) no-repeat;
+  background: url(https://i.imgur.com/VERB13C.png) no-repeat;
   width: 450px;
   height: 105px;
   text-indent: 101%;
@@ -34,7 +34,7 @@ body {
 }
 @media (max-width: 767px) {
   .logo a {
-    background: url(/image/logo-s.png) no-repeat;
+    background: url(https://i.imgur.com/YPE6gfX.png) no-repeat;
     width: 178px;
     height: 50px;
     margin: 1.25rem auto;
