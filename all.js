@@ -112,7 +112,6 @@ function showSortData(sortPrice, sortCaret) {
     });
   }
   renderData(filterData);
-  console.log(filterData);
 }
 
 //下拉表單排序
