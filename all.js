@@ -46,13 +46,11 @@ typeBTN.addEventListener('click', function (e) {
     e.target.classList.add('btnActive');
     if (type === 'all') {
       filterData = allData;
-      renderData(filterData);
-      searchHint.innerHTML = '';
     } else if (type !== 'all') {
       filterData = allData.filter((item) => item.種類代碼 === type);
-      renderData(filterData);
-      searchHint.innerHTML = '';
     }
+    renderData(filterData);
+    searchHint.innerHTML = '';
   }
 });
 
@@ -61,7 +59,7 @@ const searchInput = document.querySelector('#crop');
 const searchBTN = document.querySelector('.search');
 const searchHint = document.querySelector('#searchHint');
 function search() {
-  if (searchInput.value === '' || searchInput.value.trim() === '') {
+  if (searchInput.value.trim() === '') {
     alert('請輸入作物名稱！');
     return;
   }
